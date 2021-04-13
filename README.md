@@ -31,21 +31,21 @@ Small slot machine game for Wild Rose test.
   
   -- 50% de chance de perda
  
- -- 33% de chance de vitória de 1 linha
+  -- 33% de chance de vitória de 1 linha
   
   -- 10% de chande de vitória com 2 linhas
   
   -- 7% de chande de vitória com 3 linhas
  
- -- Interrupção das atividades
+  -- Interrupção das atividades
 - 17:40 - Continuação das implementações
  
- -- Resta a animação de brilho quando os tiles são iguais na linha
+  -- Resta a animação de brilho quando os tiles são iguais na linha
 - 19:23 - Terminada a animação de brilho
  
- -- Cada nodo de Tile possui um nodo filho, onde a animação está guardada
+  -- Cada nodo de Tile possui um nodo filho, onde a animação está guardada
  
- -- Animação somente altera a opacidade do brilho do tile em loop
+  -- Animação somente altera a opacidade do brilho do tile em loop
  
- -- Animação cessa quando a máquina gira novamente
+  -- Animação cessa quando a máquina gira novamente
 - 19:53 - Término da implementação, envio ao GitHub
