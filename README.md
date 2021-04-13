@@ -24,9 +24,9 @@ Small slot machine game for Wild Rose test.
 - 10:02 - Continuação das implementações
 - 11:00 - Alcançado maneira mais eficaz de reconhecer uma linha com os mesmos símbolos
  
- -- Sincronizada a velocidade e direção dos reels
+  -- Sincronizada a velocidade e direção dos reels
  
- -- Ao parar, define uma linha de tiles para receber imagens iguais
+  -- Ao parar, define uma linha de tiles para receber imagens iguais
 - 11:37 - Condições de vitória definidas
   
   -- 50% de chance de perda
