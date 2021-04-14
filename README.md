@@ -48,4 +48,7 @@ Small slot machine game for Wild Rose test.
   -- Animação somente altera a opacidade do brilho do tile em loop
  
   -- Animação cessa quando a máquina gira novamente
-- 19:53 - Término da implementação, envio ao GitHub
+- 21:00 - Adição de efeito sonoro quando vitorioso
+- 21:32 - Término da implementação, envio ao GitHub
+  
+  -- Revisão e comentário de código
