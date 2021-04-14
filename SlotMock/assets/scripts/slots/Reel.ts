@@ -8,7 +8,7 @@ export default class Reel extends cc.Component {//defining reel class variables:
   public reelAnchor = null;//anchor point for this reel
 
   @property({ type: cc.Enum(Aux.Direction) })
-  public spinDirection = Aux.Direction.Down;//spindirection
+  public spinDirection = Aux.Direction.Down;//spin direction
 
   @property({ type: [cc.Node], visible: false })
   public tiles = [];//tile array
@@ -63,11 +63,12 @@ export default class Reel extends cc.Component {//defining reel class variables:
  
   }//verifies if the reel is working correctly, if so, detects appropriate result and stops spinning
 
-  async stopOnTiles(reels: number, single: number, double: number, triple: number){
+  async stopOnTiles(reels: number, single: number, double: number, triple: number){//function used to force a victory under the right conditions
     
     //depending on the results, stops a set number of lines on the same tile
     this.tiles[1].getComponent('Tile').setTile(single);//one line of equal tiles
     this.tiles[1].getComponent('Tile').anim.play();
+
     if(reels >1){
       this.tiles[0].getComponent('Tile').setTile(double);//two lines with equal tiles, can be different between lines
       this.tiles[0].getComponent('Tile').anim.play();
@@ -79,7 +80,7 @@ export default class Reel extends cc.Component {//defining reel class variables:
     
   }
 
-  public stopAnimations(){
+  public stopAnimations(){//used to stop tile blinking on victory
     for(var i=0; i<3;i++){
       
       this.tiles[i].getComponent('Tile').anim.setCurrentTime(0);
@@ -148,7 +149,7 @@ export default class Reel extends cc.Component {//defining reel class variables:
 
     const move = cc.tween(element).by(0.04, { position: cc.v3(0, 144 * dirModifier, 0) });
     const doChange = cc.tween().call(() => this.changeCallback(element));
-    const end = cc.tween().by(0, { position: cc.v2(0, 144 * dirModifier) }, { easing: 'bounceOut' });
+    const end = cc.tween().by(0.05, { position: cc.v2(0, 144 * dirModifier) }, { easing: 'bounceOut' });
 
     
 

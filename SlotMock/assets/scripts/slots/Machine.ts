@@ -7,6 +7,9 @@ export default class Machine extends cc.Component {
   @property(cc.Node)
   public button: cc.Node = null;
 
+  @property({ type: cc.AudioClip })//added audio clip that plays on victory
+  victory = null;
+
   @property(cc.Prefab)
   public _reelPrefab = null;
 
@@ -49,12 +52,11 @@ export default class Machine extends cc.Component {
   private double;//potentially selects a different tile texture
   private triple;
 
-  randomizeResult(): void{
+  randomizeResult(): void{//function to determine the chances of winning and the tiles that will be equal in a single, double or triple line
     this.d100 = Math.floor(1+ (100* Math.random()));
     this.single = Math.floor(30*Math.random());
     this.double = Math.floor(30*Math.random());
     this.triple = Math.floor(30*Math.random());
-    console.log(this.d100);
     
   }
 
@@ -78,11 +80,11 @@ export default class Machine extends cc.Component {
 
   spin(): void {
     this.spinning = true;
-    this.button.getChildByName('Label').getComponent(cc.Label).string = 'STOP';
+    this.button.getChildByName('Label').getComponent(cc.Label).string = 'STOP';//changes button label
 
     for (let i = 0; i < this.numberOfReels; i += 1) {
       const theReel = this.reels[i].getComponent('Reel');
-      theReel.stopAnimations();
+      theReel.stopAnimations();//stops tile blinking
       theReel.spinDirection = Aux.Direction.Down;
       theReel.shuffle();//shuffles reel when spinning again
 
@@ -97,6 +99,8 @@ export default class Machine extends cc.Component {
     this.button.getComponent(cc.Button).interactable = false;
   }
 
+  
+
   stop(result: Array<Array<number>> = null): void {//when stopping the reel:
     setTimeout(() => {
       this.spinning = false;
@@ -109,21 +113,28 @@ export default class Machine extends cc.Component {
       const spinDelay = 1;//randomizes reel stop time, removed
       const theReel = this.reels[i].getComponent('Reel');
 
-      //here is where we'll define the chances of victory and randomness
+      //here is where the game decides on the winning conditions
     
       //does nothing if d100 <= 50, tiles will be stopped at random, 50%
-      if(this.d100>50 && this.d100<=83){//single line victory, 33%
-        theReel.stopOnTiles(1, this.single, this.double, this.triple);//chooses one tile at random to stop on a line
-      }else if(this.d100>83 && this.d100<=93){//double line victory, 10%
-        theReel.stopOnTiles(2, this.single, this.double, this.triple);
-      }else if(this.d100>93){//triple line victory, 7%
-        theReel.stopOnTiles(3, this.single, this.double, this.triple);
-      }
+      
+        if(this.d100 > 50 && this.d100<=83){//single line victory, 83-50 = 33%
+          theReel.stopOnTiles(1, this.single, this.double, this.triple);//chooses one tile at random to stop on a line
+        }else if(this.d100>83 && this.d100<=93){//double line victory, 10%
+          theReel.stopOnTiles(2, this.single, this.double, this.triple);
+        }else if(this.d100>93){//triple line victory, 7%
+          theReel.stopOnTiles(3, this.single, this.double, this.triple);
+        }
+      
+      
 
       setTimeout(() => {
         theReel.readyStop(result[i]);
-        
+        if(this.d100>50){
+          cc.audioEngine.playEffect(this.victory, false);//plays victory sound
+        }
       }, spinDelay * 1000);//stops reels
+      
+      
     }
   }
 }

@@ -6,13 +6,13 @@ export default class Tile extends cc.Component {
   @property({ type: [cc.SpriteFrame], visible: true })//defines sprite and visibility
   public textures = [];//array of textures for tiles
 
-  @property({type: [cc.Animation]})
+  @property({type: [cc.Animation]})//animation file for tile blinking
   public anim;
 
   
   
   async onLoad(): Promise<void> {//assyncronous loading of textures
-    this.anim = this.getComponentInChildren(cc.Animation);
+    this.anim = this.getComponentInChildren(cc.Animation);//loads component
     await this.loadTextures();
   }
 

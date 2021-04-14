@@ -6995,6 +6995,9 @@
     "button": {
       "__id__": 12
     },
+    "victory": {
+      "__uuid__": "8a3ce90c-c816-4835-88af-3803554d3870"
+    },
     "_reelPrefab": {
       "__uuid__": "6fc8688c-db9f-4c20-8b71-e6df9b2f3af8"
     },

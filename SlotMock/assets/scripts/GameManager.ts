@@ -5,7 +5,7 @@ export default class GameManager extends cc.Component {
   @property(cc.Node)//cc for "cocos" element, "Node" is equivalent to unity's gameObject
   machine = null;
 
-  @property({ type: cc.AudioClip })
+  @property({ type: cc.AudioClip })//button click audio
   audioClick = null;
 
 
@@ -46,8 +46,7 @@ export default class GameManager extends cc.Component {
 
   getAnswer(): Promise<Array<Array<number>>> {//randomizes results on each tile
     var slotResult = [];
-    const d100 = 1 + (100 * Math.random());//returns a number between 1 and 100~, like a one hundred sided dice
-  
+    
     return new Promise<Array<Array<number>>>(resolve => {
         setTimeout(() => {
           resolve(slotResult);
