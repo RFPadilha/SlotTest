@@ -1,12 +1,4 @@
-# SlotTest
-Small slot machine game for Wild Rose test.
-
-## Sexta-Feira - 9/04/2021
-- 17:28 - Recebido o repositório no bitbucket
-- 20:17 - Término das instalações
-
 ## Segunda-Feira - 12/04/2021
-- 16:13 - Analisando e comentando o código
 - 16:48 - Início da implementação de pattern recognition
   
   -- Tentativa de reconhecer tile a tile
